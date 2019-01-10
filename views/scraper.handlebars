@@ -1,0 +1,23 @@
+
+<div id="scraper">
+<button id="scrapebutton" type="button">Scrape</button>
+<button id="clearbutton" type="button">Clear</button>
+
+
+<div id="articles"></div>
+</div>
+
+<script>
+    $("#scrapebutton").on("click", function(){
+    clear()
+    $.get("/scrape", function(data) {
+        console.log(data)
+        console.log("hi3")
+        
+      }).then(display)
+
+
+})
+
+$("#clearbutton").on("click", clear)
+</script>
