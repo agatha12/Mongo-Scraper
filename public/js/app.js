@@ -23,7 +23,7 @@ function display() {
                 })
 
             })
-            $("#articles").append("<div id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].description + "</div>");
+            $("#articles").append(`<div class=article id= ${data[i]._id}> <h4>${data[i].title}</h4> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
             $("#" + data[i]._id).append(button)
 
         }
@@ -52,7 +52,7 @@ function displayscrape() {
                 })
 
             })
-            $("#articles").append("<div id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].description + "</div>");
+            $("#articles").append(`<div class=article id= ${data[i]._id}> <h4>${data[i].title}</h4> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
             $("#" + data[i]._id).append(button)
 
         }
@@ -96,8 +96,9 @@ function savedDisplay() {
                     notedisplay(id)
                     $("#note-modal").modal("toggle");
                 })
+                
 
-            $("#savedarticles").append("<div id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].description + "</div>");
+            $("#savedarticles").append(`<div class=article id= ${data[i]._id}> <p class=line></p> <h4>${data[i].title}</h4> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
             $("#" + data[i]._id).append(button)
             $("#" + data[i]._id).append(button2)
 
@@ -129,7 +130,8 @@ function notedisplay(id) {
             })
 
             
-            $("#savednotes").append("<div id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].body + "</div>");
+            $("#savednotes").append(`<div class=notesdiv id=${data[i]._id}><br /> Note: ${data[i].body}</div><br>`);
+            $("#" + data[i]._id).append("<br>")
             $("#" + data[i]._id).append(button)
 
         }

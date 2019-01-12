@@ -1,8 +1,9 @@
 <div id="saved">
+    <section class="buttons">
 
     <button class="navbutton" id="savedclearbutton" type="button">Clear</button>
     <button class="navbutton" id="scraper" type="button">Scraped Articles</button>
-
+</section>
 
     <div id="savedarticles"></div>
 </div>
@@ -24,11 +25,9 @@
 
                 <form class="note-form">
                     <div class="form-note">
-                        <label for="ca">Note Title: </label>
-                        <input type="text" name="title" class="firstForm" id="title" required="required">
-                        <br>
+                        
                         <label for="newNote">Note: </label>
-                        <br>
+                        
                         <input type="text" name="newNote" class="firstForm" id="newNote" required="required">
                         <br>
                     </div>
@@ -52,14 +51,14 @@
         event.preventDefault();
         const id = $("#submitBtn").val()
         const newNote = ($("#newNote").val())
-        const title = $("#title").val() 
+ 
       
         $.ajax({
             method: "POST",
             url: "/articles/" + id,
             data: {
                 
-                title: title,
+                
                 body: newNote,
                 articleId: id
             }
@@ -70,8 +69,6 @@
                
             });
         
-
-      
         $("#title").val("");
         $("#newNote").val("");
         notedisplay(id)
