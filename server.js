@@ -58,6 +58,8 @@ app.get("/scrape", function (req, res) {
       articles.title = $(element).children(".item-info").children("h2").children("a").text();
       articles.link = $(element).children(".item-info").children("h2").children("a").attr("href");
       articles.description = $(element).children(".item-info").children("p").children("a").text();
+      articles.image = $(element).children(".item-image").children(".imagewrap").children("a").children("img").attr("src");
+
 
 
       db.create(articles)
@@ -76,10 +78,10 @@ app.get("/scrape", function (req, res) {
 });
 
 app.get("/articles", function (req, res) {
-  
+
   db.find({})
     .then(function (dbArticle) {
-    
+
       res.json(dbArticle);
     })
     .catch(function (err) {
@@ -99,7 +101,8 @@ app.get("/articles/:id", function (req, res) {
       var newsave = {
         title: dbArticle.title,
         link: dbArticle.link,
-        description: dbArticle.description
+        description: dbArticle.description,
+        image: dbArticle.image
       }
       db2.create(newsave)
       res.json(dbArticle);
@@ -155,10 +158,10 @@ app.delete("/clearsaved", function (req, res) {
 
 
 app.post("/articles/:id", function (req, res) {
-  
+
   db3.create(req.body)
     .then(function (dbNote) {
-   
+
       return db2.findOneAndModify({ _id: req.params.id }, { note: dbNote._id }, { upsert: true }, { new: true });
     })
     .then(function (dbArticle) {
@@ -188,7 +191,7 @@ app.get("/notes/:id", function (req, res) {
 
 
 app.delete("/delnote/:id", function (req, res) {
-  
+
   var id = req.params.id
 
   db3.findByIdAndRemove(id, function () {

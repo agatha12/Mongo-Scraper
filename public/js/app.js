@@ -23,7 +23,7 @@ function display() {
                 })
 
             })
-            $("#articles").append(`<div class=article id= ${data[i]._id}> <h4>${data[i].title}</h4> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
+            $("#articles").append(`<div class=article id= ${data[i]._id}> <h4>${data[i].title}</h4><br><img src=${data[i].image}> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
             $("#" + data[i]._id).append(button)
 
         }
@@ -52,7 +52,7 @@ function displayscrape() {
                 })
 
             })
-            $("#articles").append(`<div class=article id= ${data[i]._id}> <h4>${data[i].title}</h4> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
+            $("#articles").append(`<div class=article id= ${data[i]._id}> <h4>${data[i].title}</h4><br><img src=${data[i].image}> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
             $("#" + data[i]._id).append(button)
 
         }
@@ -98,7 +98,7 @@ function savedDisplay() {
                 })
                 
 
-            $("#savedarticles").append(`<div class=article id= ${data[i]._id}> <p class=line></p> <h4>${data[i].title}</h4> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
+            $("#savedarticles").append(`<div class=article id= ${data[i]._id}> <p class=line></p> <h4>${data[i].title}</h4><br><img src=${data[i].image}> <br> <a href=${data[i].link}>View the article</a> <br /> <p>${data[i].description}</p></div>`);
             $("#" + data[i]._id).append(button)
             $("#" + data[i]._id).append(button2)
 
