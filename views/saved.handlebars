@@ -1,0 +1,89 @@
+<div id="saved">
+
+    <button class="nav" id="savedclearbutton" type="button">Clear</button>
+    <button class="nav" id="scraper" type="button">Scraped Articles</button>
+
+
+    <div id="savedarticles"></div>
+</div>
+
+
+<!-- Modal -->
+<div id="note-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Notes</h4>
+                <button type="button" id="closeBtn" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            {{!-- BODY --}}
+            <div class="modal-body text-center">
+
+                <div id="savednotes"></div>
+
+                <form class="note-form">
+                    <div class="form-note">
+                        <label for="ca">Note Title: </label>
+                        <input type="text" name="title" class="firstForm" id="title" required="required">
+                        <br>
+                        <label for="newNote">Note: </label>
+                        <br>
+                        <input type="text" name="newNote" class="firstForm" id="newNote" required="required">
+                        <br>
+                    </div>
+                    <br>
+                    <button type="submit"  id="submitBtn">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="modalclosebutton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#savedclearbutton").on("click", clearsaved)
+
+    $(".note-form").on("submit", function (event) {
+
+        event.preventDefault();
+        const id = $("#submitBtn").val()
+        const newNote = ($("#newNote").val())
+        const title = $("#title").val() 
+        console.log(newNote)
+        console.log(id)
+        console.log(title)
+        $.ajax({
+            method: "POST",
+            url: "/articles/" + id,
+            data: {
+                
+                title: title,
+                body: newNote,
+                articleId: id
+            }
+        })
+           
+            .then(function (data) {
+                
+                console.log(data);
+                
+               
+            });
+        
+
+      
+        $("#title").val("");
+        $("#newNote").val("");
+        notedisplay(id)
+
+    })
+
+    $("#scraper").on("click", function(){
+        location.href = "/"
+    })
+
+</script>

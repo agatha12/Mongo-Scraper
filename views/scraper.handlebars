@@ -2,6 +2,7 @@
 <div id="scraper">
 <button id="scrapebutton" type="button">Scrape</button>
 <button id="clearbutton" type="button">Clear</button>
+<button id="savedbutton"  type="button">Saved Articles</button>
 
 
 <div id="articles"></div>
@@ -20,4 +21,10 @@
 })
 
 $("#clearbutton").on("click", clear)
+
+ $("#savedbutton").on("click", function(){
+        location.href = "/saved"
+    })
+
+
 </script>
