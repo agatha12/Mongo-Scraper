@@ -1,7 +1,7 @@
 <div id="saved">
 
-    <button class="nav" id="savedclearbutton" type="button">Clear</button>
-    <button class="nav" id="scraper" type="button">Scraped Articles</button>
+    <button class="navbutton" id="savedclearbutton" type="button">Clear</button>
+    <button class="navbutton" id="scraper" type="button">Scraped Articles</button>
 
 
     <div id="savedarticles"></div>
@@ -11,13 +11,13 @@
 <!-- Modal -->
 <div id="note-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-        <!-- Modal content-->
+        
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Notes</h4>
                 <button type="button" id="closeBtn" class="close" data-dismiss="modal">&times;</button>
             </div>
-            {{!-- BODY --}}
+        
             <div class="modal-body text-center">
 
                 <div id="savednotes"></div>
@@ -53,9 +53,7 @@
         const id = $("#submitBtn").val()
         const newNote = ($("#newNote").val())
         const title = $("#title").val() 
-        console.log(newNote)
-        console.log(id)
-        console.log(title)
+      
         $.ajax({
             method: "POST",
             url: "/articles/" + id,
@@ -68,9 +66,7 @@
         })
            
             .then(function (data) {
-                
-                console.log(data);
-                
+            
                
             });
         

@@ -1,14 +1,12 @@
-
 $(document).ready(function () {
     display()
     savedDisplay()
-    console.log("linked")
 })
 
 
 function display() {
     $.getJSON("/articles", function (data) {
-        
+
         for (var i = 0; i < data.length; i++) {
 
 
@@ -29,6 +27,36 @@ function display() {
             $("#" + data[i]._id).append(button)
 
         }
+        
+
+    });
+
+}
+
+function displayscrape() {
+    $.getJSON("/articles", function (data) {
+
+        for (var i = 0; i < data.length; i++) {
+
+
+            var button = $("<button>")
+            button.attr("class", "saveart")
+            button.text("Save Article")
+            button.on("click", function () {
+                var id = $(this).parent("div").attr("id")
+                console.log(id)
+                $(this).remove()
+
+                $.getJSON("/articles/" + id, function(data){
+                    console.log(data)
+                })
+
+            })
+            $("#articles").append("<div id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].description + "</div>");
+            $("#" + data[i]._id).append(button)
+
+        }
+        alert(`You have added ${data.length} articles`)
 
     });
 
@@ -115,7 +143,7 @@ function notedisplay(id) {
 
 
 function clear() {
-    console.log("clear")
+
     $("#articles").empty()
     $.ajax({
         url: "/clear",
@@ -127,7 +155,7 @@ function clear() {
 
 
 function clearsaved() {
-    console.log("clear")
+    
     $("#savedarticles").empty()
     $.ajax({
         url: "/clearsaved",
