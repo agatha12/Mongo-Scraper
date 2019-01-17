@@ -203,5 +203,6 @@ app.delete("/delnote/:id", function (req, res) {
 })
 
 app.listen(PORT, function () {
+  process.env.PORT
   console.log("App running on port " + PORT + "!");
 });
