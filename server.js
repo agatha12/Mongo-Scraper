@@ -9,7 +9,9 @@ var db = require("./models/Article");
 var db2 = require("./models/Saved")
 var db3 = require("./models/Note")
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
+mongoose.connect(MONGODB_URI)
 
 
 
