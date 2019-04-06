@@ -42,6 +42,6 @@ Screenshots
 
 Home page
 
-![Image 1](/images/saved/png)
+![Image 1](/images/saved.png)
 
 Saved articles page with notes
