@@ -51,18 +51,19 @@ app.get("/scrape", function (req, res) {
 
     var $ = cheerio.load(response.data);
 
-
     $("article").each(function (i, element) {
-
+     
       var articles = {};
 
 
-      articles.title = $(element).children(".item-info").children("h2").children("a").text();
-      articles.link = $(element).children(".item-info").children("h2").children("a").attr("href");
-      articles.description = $(element).children(".item-info").children("p").children("a").text();
+      articles.title = $(element).children(".item-info-wrap").children(".item-info").children("h2").children("a").text();
+      articles.link = $(element).children(".item-info-wrap").children(".item-info").children("h2").children("a").attr("href");
+      articles.description = $(element).children(".item-info-wrap").children(".item-info").children("p").children("a").text();
       articles.image = $(element).children(".item-image").children(".imagewrap").children("a").children("img").attr("src");
 
-
+      if(i=2){
+        console.log(articles)
+      console.log("hi")}
 
       db.create(articles)
         .then(function (dbArticle) {
